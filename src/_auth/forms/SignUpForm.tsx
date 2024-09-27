@@ -16,7 +16,7 @@ import { SignUpValidationSchema } from '@/lib/validation'
 import Loader from '@/components/shared/Loader'
 import { Link, useNavigate } from 'react-router-dom'
 import { useToast } from '@/hooks/use-toast'
-import { useCreateUserAccount, useSignInAccount } from '@/lib/react-query/queriesAndMutations'
+import { useCreateUserAccount, useSignInAccount } from '@/lib/react-query/queries'
 import { useUserContext } from '@/context/AuthContext'
 
 const SignUpForm = () => {

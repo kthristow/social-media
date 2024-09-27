@@ -12,7 +12,7 @@ import { SigninValidation } from "@/lib/validation";
 
 import { useUserContext } from "@/context/AuthContext";
 import { useToast } from "@/hooks/use-toast";
-import { useSignInAccount } from "@/lib/react-query/queriesAndMutations";
+import { useSignInAccount } from "@/lib/react-query/queries";
 
 const SigninForm = () => {
   const { toast } = useToast();
