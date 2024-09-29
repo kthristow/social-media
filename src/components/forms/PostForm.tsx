@@ -6,16 +6,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 
 import { PostValidation } from "@/lib/validation";
-
 import { useUserContext } from "@/context/AuthContext";
 import { Loader } from "@/components/shared";
 import { useCreatePost, useUpdatePost } from "@/lib/react-query/queries";
-import { Button } from "../ui/button";
-import { FormField, FormItem, FormLabel, FormControl, FormMessage, Form } from "../ui/form";
-import { Input } from "../ui/input";
+import { useToast } from "@/hooks/use-toast";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Textarea } from "../ui/textarea";
 import FileUploader from "../shared/FileUploader";
-import { useToast } from "@/hooks/use-toast";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 type PostFormProps = {
   post?: Models.Document;
@@ -36,14 +35,12 @@ const PostForm = ({ post, action }: PostFormProps) => {
     },
   });
 
-  // Query
   const { mutateAsync: createPost, isPending: isLoadingCreate } =
     useCreatePost();
   const { mutateAsync: updatePost, isPending: isLoadingUpdate } =
     useUpdatePost();
 
-
-  const onSubmit = async (value: z.infer<typeof PostValidation>) => {
+  const handleSubmit = async (value: z.infer<typeof PostValidation>) => {
     if (post && action === "Update") {
       const updatedPost = await updatePost({
         ...value,
@@ -59,8 +56,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
       }
       return navigate(`/posts/${post.$id}`);
     }
-
-    // ACTION = CREATE
+    
     const newPost = await createPost({
       ...value,
       userId: user.id,
@@ -77,7 +73,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(handleSubmit)}
         className="flex flex-col gap-9 w-full  max-w-5xl">
         <FormField
           control={form.control}
