@@ -21,7 +21,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { ProfileValidation } from "@/lib/validation";
-import ProfileUploader from "@/components/shared/ProfileValidation";
+import ProfileUploader from "@/components/shared/ProfileUploader";
 
 
 const UpdateProfile = () => {
