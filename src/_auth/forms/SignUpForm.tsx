@@ -5,19 +5,19 @@ import { useForm } from "react-hook-form"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { SignUpValidationSchema } from '@/lib/validation'
+
 import Loader from '@/components/shared/Loader'
 import { Link, useNavigate } from 'react-router-dom'
 import { useToast } from '@/hooks/use-toast'
 import { useCreateUserAccount, useSignInAccount } from '@/lib/react-query/queries'
 import { useUserContext } from '@/context/AuthContext'
+import { SignupValidation } from '@/lib/validation'
 
 const SignUpForm = () => {
   const { toast } = useToast();
@@ -27,8 +27,8 @@ const SignUpForm = () => {
   const { mutateAsync: createUserAccount, isPending: isCreatingAccount } = useCreateUserAccount()
   const { mutateAsync: signInAccount, isPending: isSigningIn } = useSignInAccount()
 
-  const form = useForm<z.infer<typeof SignUpValidationSchema>>({
-    resolver: zodResolver(SignUpValidationSchema),
+  const form = useForm<z.infer<typeof SignupValidation>>({
+    resolver: zodResolver(SignupValidation),
     defaultValues: {
       username: "",
       name: "",
@@ -37,7 +37,7 @@ const SignUpForm = () => {
     },
   })
 
-  async function onSubmit(values: z.infer<typeof SignUpValidationSchema>) {
+  async function onSubmit(values: z.infer<typeof SignupValidation>) {
     const newUser = await createUserAccount(values);
 
     if (!newUser) {
