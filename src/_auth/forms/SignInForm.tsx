@@ -13,7 +13,7 @@ import { useSignInAccount } from "@/lib/react-query/queries";
 import { useUserContext } from "@/context/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 
-const SigninForm = () => {
+const SignInForm = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
@@ -117,4 +117,4 @@ const SigninForm = () => {
   );
 };
 
-export default SigninForm;
+export default SignInForm;

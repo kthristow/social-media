@@ -17,8 +17,8 @@ import RootLayout from "./_root/RootLayout";
 import { Toaster } from "@/components/ui/toaster";
 
 import "./globals.css";
-import SigninForm from "./_auth/forms/SigninForm";
-import SignupForm from "./_auth/forms/SignupForm";
+import SignInForm from "./_auth/forms/SignInForm";
+import SignUpForm from "./_auth/forms/SignUpForm";
 
 const App = () => {
   return (
@@ -26,8 +26,8 @@ const App = () => {
       <Routes>
         {/* public routes */}
         <Route element={<AuthLayout />}>
-          <Route path="/sign-in" element={<SigninForm />} />
-          <Route path="/sign-up" element={<SignupForm />} />
+          <Route path="/sign-in" element={<SignInForm />} />
+          <Route path="/sign-up" element={<SignUpForm />} />
         </Route>
 
         {/* private routes */}
