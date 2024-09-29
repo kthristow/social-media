@@ -1,10 +1,11 @@
 {
-    "builds": [
-      {
-        "src": "src/**/*",
-        "use": "@vercel/node"
-      }
-    ],
-    "tsconfig": "tsconfig.json"
-  }
-  
+    "github": {
+        "silent": true
+    },
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/"
+        }
+    ]
+}
